@@ -19,19 +19,32 @@ export default function Button({isActive, setIsActive}: ButtonProps) {
         gsap.to(sliderRef.current, {
             top: isActive ? "-100%" : "0%",
             duration: 0.5,
-            ease: "power3.inOut",
+            ease: "power2.inOut",
         });
     }, { scope: buttonRef, dependencies: [isActive]})
     return (
         <div onClick={() => { setIsActive(!isActive)}} className={styles.button} ref={buttonRef}>
             <div className={styles.slider} ref={sliderRef}>
                 <div className={styles.el}>
-                    <p>Menu</p>
+                    <PerspectiveText label="menu" />
                 </div>
                 <div className={styles.el}>
-                    <p>Close</p>
+                    <PerspectiveText label="close" />
                 </div>
             </div>
         </div>
     )
+}
+
+interface PerspectiveTextProps {
+    label: string;
+}
+
+function PerspectiveText({ label }: PerspectiveTextProps) {
+    return (
+        <div className={styles.perspectiveText}>
+            <p>{label}</p>
+            <p>{label}</p>
+        </div>
+    );
 }
