@@ -5,6 +5,7 @@ import Button from "./Button";
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
+import Nav from "./Nav";
 
 gsap.registerPlugin(useGSAP);
 
@@ -27,7 +28,7 @@ export default function Header() {
     return (
         <header className={styles.header} ref={headerRef}>
             <div className={styles.menu} ref={menuRef}>
-
+                <Nav />
             </div>
             <Button isActive={isActive} setIsActive={setIsActive} />
         </header>
