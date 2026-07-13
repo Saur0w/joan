@@ -3,7 +3,7 @@ export interface NavLink {
   href: string;
 }
 
-export const links: NavLink[] = [
+export const Links: NavLink[] = [
   { title: "Home", href: "/" },
   { title: "Projects", href: "/projects" }, 
   { title: "About", href: "/about" },
