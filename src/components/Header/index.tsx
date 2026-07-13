@@ -19,16 +19,16 @@ export default function Header() {
             width: isActive ? "480px" : "100px",
             height: isActive ? "650px" : "40px",
             top: isActive ? "-25px" : "0px",
-            right: isActive ? "-25px" : "0px",
+            left: isActive ? "-25px" : "0px",
             duration: 0.75,
             ease: "power2.inOut",
-            delay: isActive ? 0 : 0.35,
+
         });
     }, { scope: headerRef, dependencies: [isActive] });
     return (
         <header className={styles.header} ref={headerRef}>
             <div className={styles.menu} ref={menuRef}>
-                <Nav />
+                <Nav isActive={isActive} />
             </div>
             <Button isActive={isActive} setIsActive={setIsActive} />
         </header>
