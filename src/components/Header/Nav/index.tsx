@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./style.module.scss";
-import { Links } from "./data";
+import { Links, FooterLinks } from "./data";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -20,31 +20,57 @@ export default function Nav({ isActive }: NavProps) {
 
     useGSAP(() => {
         tl.current = gsap
-          .timeline({ paused: true })
-          .fromTo(
-            linksRef.current,
-            { rotateX: 90, opacity: 0 },
-            { rotateX: 0, opacity: 1, duration: 0.6, stagger: 0.08, delay: 0.5, ease: "power3.out" }
-          );
+            .timeline({ paused: true })
+            .fromTo(
+                linksRef.current,
+                {
+                    rotateX: 90,
+                    opacity: 0,
+                    translateY: 80,
+                    translateX: -20,
+                },
+                {
+                    rotateX: 0,
+                    translateY: 0,
+                    translateX: 0,
+                    opacity: 1,
+                    duration: 0.6,
+                    stagger: 0.08,
+                    delay: 0.5,
+                    ease: "power3.out",
+                }
+            );
     }, { scope: navRef });
 
     useGSAP(() => {
         if (!tl.current) return;
-        isActive ? tl.current.play() : tl.current.reverse();
+
+        if (isActive) {
+            tl.current.play();
+        } else {
+            tl.current.reverse();
+        }
     }, [isActive]);
 
     return (
         <div className={styles.nav} ref={navRef}>
             <div className={styles.body}>
                 {Links.map((link, i) => (
-                    <div
-                        key={i}
-                        ref={(el) => { if (el) linksRef.current[i] = el; }}
-                    >
+                    <div className={styles.linkContainer} key={i}>
+                        <div ref={(el) => { if (el) linksRef.current[i] = el; }}>
+                            <Link href={link.href}>{link.title}</Link>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div className={styles.footer}>
+                {FooterLinks.map((link, i) => (
+                    <div className={styles.footerLink} key={i}>
                         <Link href={link.href}>{link.title}</Link>
                     </div>
                 ))}
             </div>
         </div>
-    )
+    );
 }
