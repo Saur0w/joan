@@ -4,4 +4,24 @@
   width: 100vw;
   z-index: 10;
   background: #f6efef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .heading {
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 80%;
+    margin: 0;
+    line-height: 1.1;
+    color: #111;
+    letter-spacing: -0.02em;
+
+    h1 {
+      overflow: hidden;
+      perspective: 600px;
+      perspective-origin: bottom;
+    }
+  }
 }
