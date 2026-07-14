@@ -4,7 +4,7 @@ import styles from "./style.module.scss";
 import Button from "./Button";
 import { useState, useRef } from "react";
 import gsap from "gsap";
-import {useGSAP} from "@gsap/react";
+import { useGSAP } from "@gsap/react";
 import Nav from "./Nav";
 
 gsap.registerPlugin(useGSAP);

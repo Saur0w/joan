@@ -16,6 +16,7 @@ interface NavProps {
 export default function Nav({ isActive }: NavProps) {
     const navRef = useRef<HTMLDivElement>(null);
     const linksRef = useRef<HTMLDivElement[]>([]);
+    const footerRef = useRef<HTMLDivElement[]>([]);
     const tl = useRef<gsap.core.Timeline | null>(null);
 
     useGSAP(() => {
@@ -39,6 +40,21 @@ export default function Nav({ isActive }: NavProps) {
                     delay: 0.5,
                     ease: "power3.out",
                 }
+            )
+            .fromTo(
+                footerRef.current,
+                {
+                    opacity: 0,
+                    translateY: 20,
+                },
+                {
+                    opacity: 1,
+                    translateY: 0,
+                    duration: 0.4,
+                    stagger: 0.05,
+                    ease: "power2.out",
+                },
+                "-=0.2"
             );
     }, { scope: navRef });
 
@@ -46,9 +62,12 @@ export default function Nav({ isActive }: NavProps) {
         if (!tl.current) return;
 
         if (isActive) {
+            gsap.to(navRef.current, { opacity: 1, duration: 0.1 });
             tl.current.play();
         } else {
-            tl.current.reverse();
+            gsap.to(navRef.current, { opacity: 0, duration: 0.1, onComplete: () => {
+                tl.current?.pause().progress(0);
+            }});
         }
     }, [isActive]);
 
@@ -66,7 +85,12 @@ export default function Nav({ isActive }: NavProps) {
 
             <div className={styles.footer}>
                 {FooterLinks.map((link, i) => (
-                    <Link key={`f_${i}`} href={link.href}>{link.title}</Link>
+                    <div
+                        key={`f_${i}`}
+                        ref={(el) => { if (el) footerRef.current[i] = el; }}
+                    >
+                        <Link href={link.href}>{link.title}</Link>
+                    </div>
                 ))}
             </div>
         </div>

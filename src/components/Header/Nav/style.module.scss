@@ -5,29 +5,36 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     .body {
         display: flex;
         flex-direction: column;
         gap: 10px;
+
         .linkContainer {
             perspective: 120px;
             perspective-origin: bottom;
+
             a {
                 color: #333;
                 text-decoration: none;
                 font-size: 46px;
             }
         }
-
     }
 
     .footer {
         display: flex;
         flex-wrap: wrap;
-        a {
-            color: #333;
-            text-decoration: none;
+        row-gap: 15px;
+
+        div {
             width: 50%;
+            opacity: 0;
+            a {
+                color: #333;
+                text-decoration: none;
+            }
         }
     }
 }
