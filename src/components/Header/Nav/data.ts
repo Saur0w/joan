@@ -17,8 +17,8 @@ export interface FooterLinks {
 }
 
 export const FooterLinks: FooterLinks[] = [
-  { title: "X", href: "https://x.com/"},
-  { title: "Instagram", href: "https://www.instagram.com/"},
-  { title: "Facebook", href: "https://www.facebook.com/"},
-  { title: "GitHub", href: "https://github.com/"},
+  { title: "X", href: "/"},
+  { title: "Instagram", href: "/"},
+  { title: "Facebook", href: "/"},
+  { title: "GitHub", href: "/"},
 ];

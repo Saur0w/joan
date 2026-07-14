@@ -66,9 +66,7 @@ export default function Nav({ isActive }: NavProps) {
 
             <div className={styles.footer}>
                 {FooterLinks.map((link, i) => (
-                    <div className={styles.footerLink} key={i}>
-                        <Link href={link.href}>{link.title}</Link>
-                    </div>
+                    <Link key={`f_${i}`} href={link.href}>{link.title}</Link>
                 ))}
             </div>
         </div>

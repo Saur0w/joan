@@ -2,6 +2,9 @@
     height: 100%;
     padding: 100px 50px 40px 40px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .body {
         display: flex;
         flex-direction: column;
@@ -16,5 +19,15 @@
             }
         }
 
+    }
+
+    .footer {
+        display: flex;
+        flex-wrap: wrap;
+        a {
+            color: #333;
+            text-decoration: none;
+            width: 50%;
+        }
     }
 }
